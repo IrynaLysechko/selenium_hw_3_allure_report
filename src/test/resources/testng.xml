@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" data-provider-thread-count="3" verbose="2">
+    <listeners>
+        <listener class-name="com.epam.report.TestListener"/>
+    </listeners>
+    <test name="Gmail Test">
+        <classes>
+            <class name="gmailTest.GmailTest"/>
+        </classes>
+    </test>
+</suite>
