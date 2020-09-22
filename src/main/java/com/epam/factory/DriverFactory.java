@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import com.epam.utils.PropertyFile;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -28,9 +29,13 @@ public class DriverFactory {
                 System.setProperty(PropertyFile.getProperty(FIREFOX_DRIVER), PropertyFile.getProperty(FIREFOX_DRIVER_PATH));
                 driver = new FirefoxDriver();
                 break;
+            case EDGE:
+                System.setProperty(PropertyFile.getProperty(EDGE_DRIVER), PropertyFile.getProperty(EDGE_DRIVER_PATH));
+                driver = new EdgeDriver();
+                break;
         }
 
-        driver.manage().timeouts().implicitlyWait(implicitly_wait,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(implicitly_wait, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         logger.info("Driver " + browser + " was successfully created");
 

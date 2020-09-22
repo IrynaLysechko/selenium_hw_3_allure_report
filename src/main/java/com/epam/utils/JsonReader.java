@@ -1,5 +1,6 @@
 package com.epam.utils;
 
+import com.epam.entity.Message;
 import com.epam.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +14,8 @@ import java.util.List;
 public class JsonReader {
     private static final Logger logger = LogManager.getLogger(PropertyFile.class);
     private static final String userFilePath = "src\\main\\resources\\entity\\user.json";
+    private static final String messageFilePath = "src\\main\\resources\\entity\\message.json";
+
 
     public static List<User> getUserList() {
         User[] users = new User[0];
@@ -22,5 +25,15 @@ public class JsonReader {
             logger.error("Value reading failing");
         }
         return Arrays.asList(users);
+    }
+
+    public static Message getMessage() {
+        Message message = new Message();
+        try {
+            message = new ObjectMapper().readValue(new File(messageFilePath), Message.class);
+        } catch (IOException e) {
+            logger.error("Value reading failing");
+        }
+        return message;
     }
 }

@@ -12,9 +12,4 @@ public class Button extends AbstractElement {
     public void click() {
         webElement.click();
     }
-
-    public void getTextAndClick(String text) {
-        if(webElement.getText().equals(text))
-            webElement.click();
-    }
 }

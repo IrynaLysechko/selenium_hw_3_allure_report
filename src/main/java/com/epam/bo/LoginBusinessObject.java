@@ -9,7 +9,8 @@ public class LoginBusinessObject {
 
     @Step("Login with email {user.email} and password {user.password}")
     public void logIn(User user) {
-        gmailLoginPage.getEmailField().setTextAndSend(user.getEmail());
-        gmailLoginPage.getPasswordField().setTextAndSend(user.getPassword());
+        gmailLoginPage
+                .setEmailFieldAndSend(user.getEmail())
+                .setPasswordFieldAndSend(user.getPassword());
     }
 }

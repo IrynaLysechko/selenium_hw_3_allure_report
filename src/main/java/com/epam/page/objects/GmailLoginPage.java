@@ -10,11 +10,13 @@ public class GmailLoginPage extends AbstractPage {
     @FindBy(xpath = "//div[@id='password']//input")
     private TextField passwordField;
 
-    public TextField getEmailField() {
-        return emailField;
+    public GmailLoginPage setEmailFieldAndSend(String email) {
+        emailField.setTextAndSend(email);
+        return this;
     }
 
-    public TextField getPasswordField() {
-        return passwordField;
+    public GmailLoginPage setPasswordFieldAndSend(String password) {
+        passwordField.setTextAndSend(password);
+        return this;
     }
 }

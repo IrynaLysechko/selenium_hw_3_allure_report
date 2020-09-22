@@ -37,44 +37,57 @@ public class GmailHomePage extends AbstractPage {
     @FindBy(xpath = "//span[text()='Лист надіслано.']")
     private Alert notification;
 
-    public Button getComposeButton() {
-        return composeButton;
+    public GmailHomePage clickComposeButton() {
+        composeButton.click();
+        return this;
     }
 
-    public TextField getRecipientEmailField() {
-        return recipientField;
+    public GmailHomePage setRecipientEmail(String email) {
+        recipientField.setText(email);
+        return this;
     }
 
-    public TextField getMessageSubjectField() {
-        return subjectField;
+    public GmailHomePage setMessageSubjectField(String subject) {
+        subjectField.setText(subject);
+        return this;
     }
 
-    public TextField getMessageTextField() {
-        return messageField;
+    public GmailHomePage setMessageTextField(String text) {
+        messageField.setText(text);
+        return this;
     }
 
-    public Button getSendButton() {
-        return sendButton;
+    public GmailHomePage clickSendButton() {
+        sendButton.click();
+        return this;
     }
 
-    public Text getIncorrectEmail() {
-        return incorrectEmail;
-
+    public GmailHomePage getIncorrectEmail() {
+        incorrectEmail.click();
+        return this;
     }
 
-    public Alert getAlert() {
-        return alert;
+    public String getAlertText() {
+        return alert.getAlertText();
     }
 
-    public Button getOkButton() {
-        return acceptButton;
+    public GmailHomePage clickOkButton() {
+        acceptButton.click();
+        return this;
     }
 
-    public Alert getNotification() {
-        return notification;
+    public GmailHomePage clearRecipientEmailAndSetText(String email) {
+        recipientField.clearAndSetText(email);
+        return this;
     }
 
-    public Text getLink() {
-        return sentMessagesLink;
+    public GmailHomePage getNotification() {
+        notification.waitForNotification();
+        return this;
+    }
+
+    public GmailHomePage clickSentMessageLink() {
+        sentMessagesLink.click();
+        return this;
     }
 }
