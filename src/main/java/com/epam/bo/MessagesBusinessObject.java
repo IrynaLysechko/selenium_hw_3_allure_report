@@ -11,7 +11,7 @@ public class MessagesBusinessObject {
     private final GmailHomePage gmailHomePage = new GmailHomePage();
     private final SentMessagesPage sentMessagesPage = new SentMessagesPage();
 
-    @Step("Send message to email {0} with subject [{1}] and text [{2}]")
+    @Step("Send message to email {message.incorrectRecipientEmail} with subject {message.subject} and text {message.messageText}")
     public void sendMessage(Message message) {
         gmailHomePage
                 .clickComposeButton()
@@ -27,7 +27,7 @@ public class MessagesBusinessObject {
                 .getAlertText().equals("Помилка");
     }
 
-    @Step("Set correct recipient email like {0}")
+    @Step("Set correct recipient email like {message.correctRecipientEmail}")
     public void setCorrectEmailAndSendMessage(String email) {
         gmailHomePage
                 .clickOkButton()

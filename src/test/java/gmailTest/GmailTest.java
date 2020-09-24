@@ -1,5 +1,7 @@
 package gmailTest;
 
+import com.epam.bo.LoginBusinessObject;
+import com.epam.bo.MessagesBusinessObject;
 import com.epam.entity.Message;
 import com.epam.entity.User;
 import com.epam.utils.JsonReader;
@@ -15,7 +17,10 @@ public class GmailTest extends BaseTest {
 
     @Test(dataProvider = "getUser")
     public void sendMessageTest(User user) {
+        LoginBusinessObject loginBusinessObject = new LoginBusinessObject();
         loginBusinessObject.logIn(user);
+
+        MessagesBusinessObject messagesBusinessObject = new MessagesBusinessObject();
         messagesBusinessObject.sendMessage(message);
         assertThatAlertIsDisplayed(messagesBusinessObject.isAlertDisplayed());
 
